@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+	<PreferenceCategory android:title="Browser">
+	    <EditTextPreference
+	    	android:key="default_url"
+	    	android:summary="URL to open"
+			android:title="Default URL" 
+			android:defaultValue="http://www.google.com"
+		/>
+	    <CheckBoxPreference 
+			android:key="nav_bar_visible"
+			android:summary="Show Navigation Bar"
+			android:title="Show the Navigation Bar by Default" 
+			android:defaultValue="true"
+	    	android:enabled="true"/>
+	    	    
+   	</PreferenceCategory>
+		        
+</PreferenceScreen>
