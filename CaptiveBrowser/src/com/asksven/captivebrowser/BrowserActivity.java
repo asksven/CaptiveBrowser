@@ -5,6 +5,7 @@ package com.asksven.captivebrowser;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.ContextMenu;
@@ -28,6 +29,7 @@ public class BrowserActivity extends Activity
     static final int CONTEXT_TOGGLE_NAV_ID 		= 100;
     static final int CONTEXT_PREFERENCES_ID		= 101;
     static final int CONTEXT_README_ID	 		= 102;
+    static final int CONTEXT_CLEAR_ID	 		= 103;
 
 
 	/**
@@ -130,6 +132,7 @@ public class BrowserActivity extends Activity
     	menu.add(CONTEXT_MENU_ID, CONTEXT_TOGGLE_NAV_ID, Menu.NONE, "Toggle Navigation");
     	menu.add(CONTEXT_MENU_ID, CONTEXT_PREFERENCES_ID, Menu.NONE, "Preferences");
     	menu.add(CONTEXT_MENU_ID, CONTEXT_README_ID, Menu.NONE, "Readme");
+    	menu.add(CONTEXT_MENU_ID, CONTEXT_CLEAR_ID, Menu.NONE, "Clear Launcher");
         	
    } 
     
@@ -164,7 +167,9 @@ public class BrowserActivity extends Activity
 	        	Intent intentReadMe = new Intent(this, ReadmeActivity.class);
 	            this.startActivity(intentReadMe);
     			return true;
-     
+    		case CONTEXT_CLEAR_ID:
+    			PackageManager localPackageManager = getPackageManager();
+    			localPackageManager.clearPackagePreferredActivities("com.asksven.captivebrowser");
     		default:
     			return false;
     	}
